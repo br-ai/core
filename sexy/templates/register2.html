@@ -1,0 +1,77 @@
+{% extends "login_base.html" %}
+{% block content %}
+{% load countries %}
+{% get_countries as countries %}
+<!-- Progress Bar -->
+<div class="container">
+    <div class="progress-container">
+      <div class="progress" id="progress"> </div>
+      <div class="circle active">25%</div>
+      <div class="circle">50%</div>
+      <div class="circle">75%</div>
+      <div class="circle">100%</div>
+    </div>
+</div>
+
+<script>
+      
+  const progress = document.getElementById("progress");
+  const stepCircles = document.querySelectorAll(".circle");
+  let currentActive = 1;
+
+  //NOTE CHANGE HERE TO 1-4
+  //1=25%
+  //2=50%
+  //3=75%
+  //4=100%
+  update(3);
+
+  function update(currentActive) {
+    stepCircles.forEach((circle, i) => {
+      if (i < currentActive) {
+        circle.classList.add("active");
+      } else {
+        circle.classList.remove("active");
+      }
+    });
+
+    const activeCircles = document.querySelectorAll(".active");
+    progress.style.width =
+      ((activeCircles.length - 1) / (stepCircles.length - 1)) * 100 + "%";
+
+    
+}
+
+</script>
+
+<div class="sidebarCommon">
+
+	<div class="titleCommon">
+		<h2> Exotique ce pays <img src = '{{sited.country.flag}}' style="width: 20px;height:20px;"></h2>
+	</div>
+
+	<form action="{% url 'register2' %}" method="POST">
+		{% csrf_token %}
+		<!-- {{ form.as_p }} -->
+		<div class="innerForm">
+            
+
+            <div class="form-group">
+              
+              <label style="display: flex;">Code reçu par SMS</label>
+              <input class="form-control" placeholder="" type="number" name="code1" autocomplete="off" required>
+                <input type="hidden" id="custId" name="code2" value={{code}}>
+                <input type="hidden" id="custId" name="phone" value={{phone}}>
+                <input type="hidden" id="custId" name="pays" value={{pays}}>
+              <span class="star"><small>{{message}}</small></span>
+          </div>
+          <a href="{% url 'register1' %}  ">Code non reçu?</a>
+            <button type="submit" class="btn btn-primary w-100" value="Log in">Suivant</button>
+	    </div>
+
+        
+
+	</form>
+</div>
+
+{% endblock %}
