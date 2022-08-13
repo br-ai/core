@@ -13,5 +13,6 @@ urlpatterns = [
     path('register1', views.register1, name = 'register1'),
     path('register2', views.register2, name = 'register2'),
     path('register3', views.register3, name = 'register3'),
+   
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,6 @@
 #Import models
 from profil.models import User, Follower
+from location.models import Cities
 
 #Import others Stuffs
 from django.shortcuts import render
@@ -11,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 import json
+import coreapi
 
 #import boto&client for sending otp
 from random import randint
