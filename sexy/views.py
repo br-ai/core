@@ -14,8 +14,7 @@ import json
 
 #import boto&client for sending otp
 from random import randint
-# from http import client
-# import boto3
+from twilio.rest import Client
 
 # Home page view
 def home(request):
@@ -32,7 +31,7 @@ def login_view(request):
 
         # Try to get user associate with previous phone numer
         try:
-            person = User.objects.get(phone_number = phone)
+            person = User.objects.get(phone = phone)
             user = authenticate(request, username=person.username, password=password)
 
             # Check if authentication successful
@@ -76,6 +75,15 @@ def register1(request):
             #send sms using boto3 an amazon SNS
 
             code = randint(10000, 50000)
+            account_sid = 'ACdab182b057d72ecefde6c5b448631399'
+            auth_token = 'e87f94f44f10faa5033ed4f0c5951f56'
+            client = Client(account_sid, auth_token)
+            message = client.messages.create(
+                              body='Votre code de confirmation est '+str(code),
+                              from_='+12183069736',
+                              to=phone
+                          )
+
             # client = boto3.client('sns', 'eu-west-3')
             # client.publish(PhoneNumber='+237690638290', Message='Votre code est : '+str(code))
 
@@ -96,6 +104,7 @@ def register2(request):
         phone = request.POST["phone"]
         code1 = request.POST["code1"]
         code2 = request.POST["code2"]
+        sited = User(username='test', country=pays)
         
         if code1 == code2:
             return render(request, "register3.html", {
@@ -109,6 +118,7 @@ def register2(request):
                 "phone": phone,
                 "pays": pays,
                 "code":code2,
+                "sited":sited,
             })
    
     else:

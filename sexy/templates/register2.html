@@ -47,7 +47,7 @@
 <div class="sidebarCommon">
 
 	<div class="titleCommon">
-		<h2> Exotique ce pays <img src = '{{sited.country.flag}}' style="width: 20px;height:20px;"></h2>
+		<h2> Exotique ce pays </h2>
 	</div>
 
 	<form action="{% url 'register2' %}" method="POST">
@@ -58,7 +58,7 @@
 
             <div class="form-group">
               
-              <label style="display: flex;">Code reçu par SMS</label>
+              <label style="display: flex;">Code reçu par SMS  <img src = '{{sited.country.flag}}' style="width: 30px;height:30px;margin-left: 10px;"></label>
               <input class="form-control" placeholder="" type="number" name="code1" autocomplete="off" required>
                 <input type="hidden" id="custId" name="code2" value={{code}}>
                 <input type="hidden" id="custId" name="phone" value={{phone}}>
