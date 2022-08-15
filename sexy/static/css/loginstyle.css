@@ -305,7 +305,7 @@ input[type="checkbox"]:checked ~ #sidebarMenu .closeSidebar{transform: translate
 .loginPage .form-control::placeholder{color: #7E95A9;font-family: caustenregular;font-weight: 400;font-size: 16px;}
 .loginPage .btn{text-transform: uppercase;}
 .loginPage a{font-size: 15px;text-decoration: underline;color: #002D56;margin:20px 0;display: block;text-align: center;}
-.loginPage a:hover{background-color: #e22626;}
+
 .loginPage  .innerForm{padding:0 30px;}
 .loginPage form label{font-size: 16px;font-family: 'caustenmedium';font-weight: 500;color: #002D56;}
 .form-footer{border-top: 1px solid #DEE2E6;padding:20px;text-align: center;}

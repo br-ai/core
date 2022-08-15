@@ -78,13 +78,14 @@ def register1(request):
 
             code = randint(10000, 50000)
             account_sid = 'ACdab182b057d72ecefde6c5b448631399'
-            auth_token = 'e87f94f44f10faa5033ed4f0c5951f56'
+            auth_token = '4130825e66189627c99bfa5746a8b3d0'
             client = Client(account_sid, auth_token)
             message = client.messages.create(
                               body='Votre code de confirmation est '+str(code),
                               from_='+12183069736',
                               to=phone
                           )
+                          
 
             # client = boto3.client('sns', 'eu-west-3')
             # client.publish(PhoneNumber='+237690638290', Message='Votre code est : '+str(code))
